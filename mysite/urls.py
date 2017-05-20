@@ -15,11 +15,15 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from mysite.views import current_datetime, hello, hours_ahead
+from mysite.views import contact, current_datetime, display_meta, hello, hours_ahead
+from books import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', display_meta),
     url(r'^hello/$', hello),
     url(r'^time/$', current_datetime),
-    url(r'^time/plus/(\d{1,2})/$', hours_ahead)
+    url(r'^time/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^search/$', views.search),
+    url(r'^contact/$', contact),
 ]
